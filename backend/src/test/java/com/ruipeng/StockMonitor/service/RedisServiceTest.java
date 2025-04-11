@@ -1,6 +1,5 @@
 package com.ruipeng.StockMonitor.service;
 
-import com.ruipeng.StockMonitor.model.StockData;
 import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -9,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.TimeUnit;
 
 @Service
-public class RedisService {
+public class RedisServiceTest {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
@@ -20,9 +19,9 @@ public class RedisService {
         System.out.println("Cache set success for " + key + ": " + success);
     }
 
-    public StockData get(String key) {
+    public Publisher<?> get(String key) {
         Object value = redisTemplate.opsForValue().get(key);
         System.out.println("Getting cache: " + key + ", value: " + value);
-        return value != null ? (StockData) value : null;
+        return (Publisher<?>) value;
     }
 }

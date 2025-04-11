@@ -12,10 +12,9 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class StockAnalyzeService {
+public class StockAnalyzeServiceTest {
     @Autowired
     private StockAnalysisRepo analysisRepo;
-
     public double calculateSMA(Map<String, StockPrice> timeSeries,int period){
         List<Double> closes = new ArrayList<>();
         timeSeries.values().stream()
